@@ -45,9 +45,9 @@ public:
 	double MinWeaponSpread = 1;
 	// Amount of time that needs to pass after a shot for the spread to start becoming smaller
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Weapon, meta = (AllowPrivateAccess = "true"))
-	double WeaponSpreadRegenCooldown = 2;
+	double WeaponSpreadRegenCooldown = 1;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Weapon, meta = (AllowPrivateAccess = "true"))
-	double WeaponSpreadRegenPerSec = 1.0;
+	double WeaponSpreadRegenPerSec = 3.0;
 
 	void SetAimingState(bool ShouldBeAiming);
 
