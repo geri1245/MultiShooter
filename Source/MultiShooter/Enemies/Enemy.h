@@ -16,8 +16,14 @@ public:
 	// Sets default values for this character's properties
 	AEnemy();
 
+	UFUNCTION(Server, Reliable)
+	void Attack();
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<class UHealthComponent> HealthComponent;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnAttackStarted();
 
 protected:
 	// Called when the game starts or when spawned

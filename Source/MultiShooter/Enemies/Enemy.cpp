@@ -16,6 +16,11 @@ AEnemy::AEnemy()
 	HealthComponent->HealthChanged.AddDynamic(this, &AEnemy::OnHealthChanged_Server);
 }
 
+void AEnemy::Attack_Implementation()
+{
+	OnAttackStarted();
+}
+
 void AEnemy::OnHealthChanged_Server_Implementation(float OldValue, float NewValue)
 {
 	if (NewValue < 0)

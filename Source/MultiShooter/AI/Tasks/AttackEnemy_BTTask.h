@@ -5,22 +5,22 @@
 #include "BehaviorTree/Tasks/BTTask_BlackboardBase.h"
 #include "CoreMinimal.h"
 
-#include "DummyTask.generated.h"
+#include "AttackEnemy_BTTask.generated.h"
 
-struct FDummyStructMemory
+struct UAttackEnemyBTTaskMemory
 {
-	int SomeNumber;
+	APawn* TargetEnemy = nullptr;
 };
 
 /**
  *
  */
-UCLASS() class MULTISHOOTER_API UDummyTask : public UBTTask_BlackboardBase
+UCLASS() class MULTISHOOTER_API UAttackEnemy_BTTask : public UBTTask_BlackboardBase
 {
 public:
 	GENERATED_BODY()
 
-	UDummyTask(const FObjectInitializer& ObjectInitializer);
+	UAttackEnemy_BTTask(const FObjectInitializer& ObjectInitializer);
 
 	virtual void PostLoad() override;
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
@@ -28,4 +28,7 @@ public:
 	virtual void OnGameplayTaskDeactivated(UGameplayTask& Task) override;
 	virtual void OnTaskFinished(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, EBTNodeResult::Type TaskResult) override;
 	virtual uint16 GetInstanceMemorySize() const override;
+
+	UPROPERTY(Category = Node, EditAnywhere, meta = (ClampMin = "0.0", UIMin = "0.0"))
+	float AttackRange = 5;
 };
